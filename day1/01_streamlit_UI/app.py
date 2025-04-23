@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+from playsound import playsound
 
 # ============================================
 # ページ設定
@@ -36,27 +37,32 @@ name = st.text_input("あなたの名前", "KiethMyst")
 st.write(f"こんにちは、{name}さん！")
 
 # ボタン
-# st.subheader("ボタン")
-# if st.button("クリックしてください"):
-#     st.success("ボタンがクリックされました！")
+st.subheader("ボタン")
+if st.button("クリックしてください", key="button1"):
+    st.success("ボタンがクリックされました！")
+
+st.subheader("ボタン w/ sound - for Python")
+if st.button("クリックしてください", key="button2"):
+    st.success("ボタンがクリックされました！")
+    # Play sound when button is clicked
+    playsound("./mixkit-fast-double-click-on-mouse-275.mp3")
+
 
 # チェックボックス
-# st.subheader("チェックボックス")
-# if st.checkbox("チェックを入れると追加コンテンツが表示されます"):
-#     st.info("これは隠れたコンテンツです！")
-
+st.subheader("チェックボックス")
+if st.checkbox("チェックを入れると追加コンテンツが表示されます"):
+    st.info("これは隠れたコンテンツです！")
 # スライダー
-# st.subheader("スライダー")
-# age = st.slider("年齢", 0, 100, 25)
-# st.write(f"あなたの年齢: {age}")
-
+st.subheader("スライダー")
+age = st.slider("年齢", 0, 100, 25)
+st.write(f"あなたの年齢: {age}")
 # セレクトボックス
-# st.subheader("セレクトボックス")
-# option = st.selectbox(
-#     "好きなプログラミング言語は?",
-#     ["Python", "JavaScript", "Java", "C++", "Go", "Rust"]
-# )
-# st.write(f"あなたは{option}を選びました")
+st.subheader("セレクトボックス")
+option = st.selectbox(
+    "好きなプログラミング言語は?",
+    ["Python", "JavaScript", "Java", "C++", "Go", "Rust"]
+)
+st.write(f"あなたは{option}を選びました")
 
 # ============================================
 # レイアウト
@@ -90,29 +96,29 @@ st.write(f"こんにちは、{name}さん！")
 # ============================================
 # データ表示
 # ============================================
-# st.header("データの表示")
+st.header("データの表示")
 
 # サンプルデータフレームを作成
-# df = pd.DataFrame({
-#     '名前': ['田中', '鈴木', '佐藤', '高橋', '伊藤'],
-#     '年齢': [25, 30, 22, 28, 33],
-#     '都市': ['東京', '大阪', '福岡', '札幌', '名古屋']
-# })
+df = pd.DataFrame({
+    '名前': ['田中', '鈴木', '佐藤', '高橋', '伊藤'],
+    '年齢': [25, 30, 22, 28, 33],
+    '都市': ['東京', '大阪', '福岡', '札幌', '名古屋']
+})
 
 # データフレーム表示
-# st.subheader("データフレーム")
-# st.dataframe(df, use_container_width=True)
+st.subheader("データフレーム")
+st.dataframe(df, use_container_width=True)
 
 # テーブル表示
-# st.subheader("テーブル")
-# st.table(df)
+st.subheader("テーブル")
+st.table(df)
 
 # メトリクス表示
-# st.subheader("メトリクス")
-# col1, col2, col3 = st.columns(3)
-# col1.metric("温度", "23°C", "1.5°C")
-# col2.metric("湿度", "45%", "-5%")
-# col3.metric("気圧", "1013hPa", "0.1hPa")
+st.subheader("メトリクス")
+col1, col2, col3 = st.columns(3)
+col1.metric("温度", "23°C", "1.5°C")
+col2.metric("湿度", "45%", "-5%")
+col3.metric("気圧", "1013hPa", "0.1hPa")
 
 # ============================================
 # グラフ表示
